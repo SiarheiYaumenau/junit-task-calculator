@@ -1,4 +1,9 @@
-import org.junit.jupiter.api.*;
+import com.epam.tat.module4.Timeout;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 @DisplayName("Timeout sleep tests")

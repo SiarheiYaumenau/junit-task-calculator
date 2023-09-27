@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <custom.lib.path>C:/Java_education/Junit-task-final/lib</custom.lib.path>
   </properties>
 
   <dependencies>
@@ -21,12 +22,20 @@
       <version>5.10.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.epam.tat.module4</groupId>
+      <artifactId>calculator</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${custom.lib.path}/calculator-1.0.jar</systemPath>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
         <configuration>
           <source>8</source>
           <target>8</target>
@@ -41,6 +50,28 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.1.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.0</version>
       </plugin>
     </plugins>
   </build>
